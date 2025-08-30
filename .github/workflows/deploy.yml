@@ -40,7 +40,4 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
-            podman pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            podman stop test-deploy || true
-            podman rm test-deploy || true
-            podman run -d --name test-deploy -p 0.0.0.0:3000:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            cd ~/traefik && docker compose pull && docker compose up -d
