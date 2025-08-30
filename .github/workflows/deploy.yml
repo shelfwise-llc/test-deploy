@@ -43,4 +43,4 @@ jobs:
             podman pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
             podman stop test-deploy || true
             podman rm test-deploy || true
-            podman run -d --name test-deploy -p 0.0.0.0:8080:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            podman run -d --name test-deploy -p 0.0.0.0:3000:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
